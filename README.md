@@ -48,3 +48,7 @@ Windows'ta bash komutlarını çalıştırmak için git bash kullanabilirsiniz.
 Başlatmak için klasöre sağ tıklayıp `Git Bash Here`'e tıklayın.
 
 ![](images/git_bash_prompt.png)
+
+---
+
+Klavye ile arabayı kontrol etmek için programa bazı izinleri vermeniz gerekebilir. Olmazsa yönetici olarak çalıştırmayı falan deneyin
