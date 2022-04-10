@@ -1,1 +1,3 @@
 pynput
+colored-traceback
+colorama

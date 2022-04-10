@@ -19,7 +19,7 @@ $ cd karmasuru22
 $ pip install -r requirements.txt
 ```
 
-5. Teknofest'in yayınladığı simülasyonu indirin
+5. Teknofest'in yayınladığı [simülasyonu](https://drive.google.com/drive/folders/1rhwo-mK7Vp1QYcpO3EgLBtEYGMZbLp02?usp=sharing) indirin
 
 6. Kendi platformunuzun zip dosyasını açın ve buraya kopyalayın. Klasörün adını `sim` yapın.
 
