@@ -10,24 +10,26 @@ _CLIENT_PORT = 10801
 _SERVER_ADDRESS = "127.0.0.1"
 _SERVER_PORT = 10802
 
-_RECEIVE_TIMEOUT = 20
+_RECEIVE_TIMEOUT = 400
 
 _INT_MSG_TYPE__UGV_CONTROL = 1
 
 # ================================================ PRIVATE VARIABLES ================================================
 
-_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-_socket.bind((_CLIENT_ADDRESS, _CLIENT_PORT))
-_socket.setblocking(False)
+_socket = None
 
 
 # ================================================ PRIVATE FUNCTIONS ================================================
 
 def _send_message(data):
+    if (not _socket):
+        return
     _socket.sendto(data, (_SERVER_ADDRESS, _SERVER_PORT))
 
 
 def _decode_message(message):
+    if (not _socket):
+        return
     if message is None:
         return None
     if len(message) == 0:
@@ -42,12 +44,20 @@ SUPPLY_WATER = 2
 
 # ================================================ PUBLIC FUNCTIONS ================================================
 
+def init_socket():
+    global _socket
+    print("Initing socket...")
+    _socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    _socket.bind((_CLIENT_ADDRESS, _CLIENT_PORT))
+    _socket.setblocking(False)
 
 def send_message(data_list):
     _send_message(bytearray(data_list))
 
 
 def receive_message():
+    if (not _socket):
+        return
     data = None
     try:
         ready = select.select([_socket], [], [], _RECEIVE_TIMEOUT / 1000.0)

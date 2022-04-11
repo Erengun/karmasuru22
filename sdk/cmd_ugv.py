@@ -5,6 +5,7 @@ import struct
 # ================================================ PRIVATE FUNCTIONS ================================================
 
 def _send_cmd(ugv_id, cmd_type, p0, p1, p2):
+    print(f"Sending cmd to {ugv_id}")
     data = [2]
     for i in ugv_id.to_bytes(4, "big"):
         data.append(i)
